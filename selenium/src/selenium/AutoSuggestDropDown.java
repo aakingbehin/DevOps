@@ -1,11 +1,14 @@
 package selenium;
 
+import static org.testng.Assert.assertFalse;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 class AutoSuggestDropDown{
 	
@@ -38,6 +41,10 @@ class AutoSuggestDropDown{
 		System.out.println(numbElements);
 		
 		driver.findElement(By.xpath("//input[@id='ctl00_mainContent_chk_friendsandfamily']")).click(); 
+		boolean checked = driver.findElement(By.xpath("//input[@id='ctl00_mainContent_chk_SeniorCitizenDiscount']")).isSelected();
+		//Assert.assertFalse(checked);
+		//Assert.assertTrue(checked);
+		
 		
 	}
 }

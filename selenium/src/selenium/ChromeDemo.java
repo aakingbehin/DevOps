@@ -1,9 +1,12 @@
 package selenium;
 
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 class ChromeDemo{
 	
@@ -41,7 +44,23 @@ class ChromeDemo{
 		//driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
 		driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
 		
+		//Calendar UI
+		driver.findElement(By.xpath("//a[contains(@class,'ui-state-highlight')]")).click();
 		
+		//working with radio buttons and checking if an element is active or not
+		//boolean able = driver.findElement(By.xpath("//input[@id='ctl00_mainContent_view_date2']")).isEnabled();
+		//System.out.println(able);
+		String elementAttribute = driver.findElement(By.xpath("//div[@id='Div1']")).getAttribute("style");
+		System.out.println(elementAttribute);
 		
+		driver.findElement(By.xpath("//input[@id='ctl00_mainContent_rbtnl_Trip_1']")).click();
+		
+		elementAttribute = driver.findElement(By.xpath("//div[@id='Div1']")).getAttribute("style");
+		System.out.println(elementAttribute);
+		
+		if(driver.findElement(By.xpath("//div[@id='Div1']")).getAttribute("style").contains("1")) {
+			System.out.println("its enabled");
+			Assert.assertTrue(true);
+		}
 	}
 }
